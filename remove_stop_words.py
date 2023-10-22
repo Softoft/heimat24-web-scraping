@@ -35,15 +35,15 @@ def process_html(file_path):
             filtered_lines.append(' '.join(filtered_words))
 
     text = '\n'.join(filtered_lines)
-    text = re.sub(r'[\s ;.\-_*+#"\']+', ' ', text)
     return text
 
 
 if __name__ == '__main__':
-    print(stopwords.words('german'))
     print("{:,.2f}".format(count_chars(read_html_file("website_content.html"))))
     processed_text = process_html("website_content.html")
+    print("{:,.2f}".format(count_chars(processed_text)))
+
     processed_text = processed_text[:10 ** 7]
     with open("processed_website_content.html", 'w', encoding='utf-8') as file:
         file.write(processed_text)
-    print("{:,.2f}".format(count_chars(processed_text)))
+
