@@ -39,11 +39,11 @@ def process_html(file_path):
 
 
 if __name__ == '__main__':
-    print("{:,.2f}".format(count_chars(read_html_file("website_content.html"))))
-    processed_text = process_html("website_content.html")
+    print("{:,.2f}".format(count_chars(read_html_file("data/website_content.html"))))
+    processed_text = process_html("data/website_content.html")
     print("{:,.2f}".format(count_chars(processed_text)))
 
     processed_text = processed_text[:10 ** 7]
-    with open("processed_website_content.html", 'w', encoding='utf-8') as file:
+    with open("data/processed_website_content.html", 'w', encoding='utf-8') as file:
         file.write(processed_text)
 
