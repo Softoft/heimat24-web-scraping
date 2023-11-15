@@ -26,7 +26,7 @@ def process_html(file_path):
     lines = text.split('\n')
     unique_lines = list(set(lines))
 
-    stop_words = set(stopwords.words('english') + stopwords.words('german'))
+    stop_words = set(stopwords.words('english') + stopwords.words('german') + stopwords.words('french'))
     filtered_lines = []
     for line in unique_lines:
         words = line.split()
@@ -39,11 +39,13 @@ def process_html(file_path):
 
 
 if __name__ == '__main__':
-    print("{:,.2f}".format(count_chars(read_html_file("data/website_content.html"))))
-    processed_text = process_html("data/website_content.html")
+    file_name = "data/dataset_toulon.txt"
+    target_file_name = "data/processed_data_toulon.txt"
+    print("{:,.2f}".format(count_chars(read_html_file(file_name))))
+    processed_text = process_html(file_name)
     print("{:,.2f}".format(count_chars(processed_text)))
 
     processed_text = processed_text[:10 ** 7]
-    with open("data/processed_website_content.html", 'w', encoding='utf-8') as file:
+    with open(target_file_name, 'w', encoding='utf-8') as file:
         file.write(processed_text)
 
